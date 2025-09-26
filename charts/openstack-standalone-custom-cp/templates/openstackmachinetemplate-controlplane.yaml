@@ -10,6 +10,7 @@ spec:
         name: {{ .Values.clusterIdentity.name }}
         region: {{ .Values.identityRef.region }}
         cloudName: {{ .Values.identityRef.cloudName}}
+        type: {{ .Values.identityRef.type | default "Secret" }}
       image:
         filter:
           name: {{ .Values.controlPlane.image.filter.name }}

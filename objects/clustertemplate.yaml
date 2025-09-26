@@ -1,0 +1,19 @@
+apiVersion: k0rdent.mirantis.com/v1beta1
+kind: ClusterTemplate
+metadata:
+  annotations:
+    helm.sh/resource-policy: keep
+  labels:
+    k0rdent.mirantis.com/component: kcm
+  name: openstack-standalone-custom-cp-1-0-0
+  namespace: kcm-system
+spec:
+  helm:
+    chartSpec:
+      chart: ./charts/openstack-standalone-custom-cp
+      interval: 10m0s
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: custom-templates
+      version: 1.0.0

@@ -3,8 +3,10 @@ kind: GitRepository
 metadata:
   name: custom-templates
   namespace: kcm-system
+  labels:
+    k0rdent.mirantis.com/managed: "true"
 spec:
   interval: 1m
-  url: https://github.com/va4st/ksi-custom-templates.git
+  url: https://github.com/va4st/ksi-custom-templates
   ref:
     branch: main  
