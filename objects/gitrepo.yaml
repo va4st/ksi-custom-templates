@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: custom-templates
+  namespace: kcm-system
+spec:
+  interval: 1m
+  url: https://github.com/va4st/ksi-custom-templates.git
+  ref:
+    branch: main  
