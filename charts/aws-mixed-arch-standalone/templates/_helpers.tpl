@@ -10,6 +10,10 @@
     {{- include "cluster.name" . }}-worker-mt
 {{- end }}
 
+{{- define "awsmachinetemplatearm64.worker.name" -}}
+    {{- include "cluster.name" . }}-worker-mt-arm64
+{{- end }}
+
 {{- define "k0scontrolplane.name" -}}
     {{- include "cluster.name" . }}-cp
 {{- end }}
@@ -18,7 +22,15 @@
     {{- include "cluster.name" . }}-machine-config
 {{- end }}
 
+{{- define "k0sworkerconfigtemplatearm64.name" -}}
+    {{- include "cluster.name" . }}-machine-config-arm64
+{{- end }}
+
 {{- define "machinedeployment.name" -}}
+    {{- include "cluster.name" . }}-md
+{{- end }}
+
+{{- define "machinedeploymentarm64.name" -}}
     {{- include "cluster.name" . }}-md
 {{- end }}
 
