@@ -1,4 +1,4 @@
-{{- if ne .Values.workersNumber 0 }}
+{{- if ne (int .Values.workersNumber) 0 }}
 {{- $global := .Values.global | default dict }}
 apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
 kind: K0sWorkerConfigTemplate

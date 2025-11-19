@@ -5,12 +5,12 @@ metadata:
     helm.sh/resource-policy: keep
   labels:
     k0rdent.mirantis.com/component: kcm
-  name: openstack-standalone-custom-cp-1-0-0
+  name: aws-mixed-arch-standalone-1-0-0
   namespace: kcm-system
 spec:
   helm:
     chartSpec:
-      chart: ./charts/openstack-standalone-custom-cp
+      chart: ./charts/aws-mixed-arch-standalone
       interval: 10m0s
       reconcileStrategy: ChartVersion
       sourceRef:
