@@ -15,7 +15,7 @@ spec:
       - --enable-cloud-provider
       - --kubelet-extra-args="--cloud-provider=external"
       - --disable-components=konnectivity-server
-      {{- if eq (int .Values.workersNumber) 0 and eq (int .Values.armWorkersNumber) 0 }}
+      {{- if and (eq (int .Values.workersNumber) 0) (eq (int .Values.armWorkersNumber) 0) }}
       - --no-taints
       {{- end }}
       {{- range $arg := .Values.k0s.cpArgs }}
