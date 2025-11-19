@@ -1,7 +1,7 @@
 # Cluster parameters
 controlPlaneNumber: 3 # @schema description: The number of the control-plane machines; minimum: 1; type: integer; required: true
 workersNumber: 1 # @schema description: The number of the worker machines; minimum: 0; type: integer; required: true
-armWorkersNumber: 1 # @schema description: The number of the worker machines; minimum: 0; type: integer; required: true
+armWorkersNumber: 0 # @schema description: The number of the worker machines; minimum: 0; type: integer; required: true
 
 clusterNetwork: # @schema description: The cluster network configuration; type: object
   pods: # @schema description: The network ranges from which Pod networks are allocated; type: object
