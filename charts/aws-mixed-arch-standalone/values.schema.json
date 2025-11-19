@@ -1,14 +1,76 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "A KCM cluster aws-standalone-cp template",
+  "description": "A KCM cluster $* template",
   "type": "object",
   "required": [
     "controlPlaneNumber",
     "workersNumber",
+    "armWorkersNumber",
     "region",
     "clusterIdentity"
   ],
   "properties": {
+    "arm64Worker": {
+      "description": "The configuration of the worker machines",
+      "type": "object",
+      "required": [
+        "iamInstanceProfile",
+        "instanceType"
+      ],
+      "properties": {
+        "amiID": {
+          "description": "The ID of Amazon Machine Image",
+          "type": "string"
+        },
+        "iamInstanceProfile": {
+          "description": "A name of an IAM instance profile to assign to the instance",
+          "type": "string"
+        },
+        "imageLookup": {
+          "description": "AMI lookup parameters",
+          "type": "object",
+          "required": [
+            "format",
+            "org"
+          ],
+          "properties": {
+            "baseOS": {
+              "description": "The name of the base operating system to use for image lookup the AMI is not set",
+              "type": "string"
+            },
+            "format": {
+              "description": "The AMI naming format to look up the image for this machine. It will be ignored if an explicit AMI is set",
+              "type": "string"
+            },
+            "org": {
+              "description": "The AWS Organization ID to use for image lookup if AMI is not set",
+              "type": "string"
+            }
+          }
+        },
+        "instanceType": {
+          "description": "The ARM64 type of instance to create. Example: m4.xlarge",
+          "type": "string"
+        },
+        "nonRootVolumes": {
+          "title": "Non-root storage volumes",
+          "description": "Configuration options for the non root storage volumes, format: https://pkg.go.dev/sigs.k8s.io/cluster-api-provider-aws/v2/api/v1beta2#AWSMachineSpec.NonRootVolumes",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "uncompressedUserData": {
+          "description": "Specify whether the user data is gzip-compressed before it is sent to ec2 instance. Cloud-init has built-in support for gzip-compressed user data. User data stored in aws secret manager is always gzip-compressed",
+          "type": "boolean"
+        }
+      }
+    },
+    "armWorkersNumber": {
+      "description": "The number of the worker machines",
+      "type": "integer",
+      "minimum": 0
+    },
     "auth": {
       "description": "Authentication settings for the cluster, optional, auto-populated",
       "type": "object",
@@ -366,7 +428,7 @@
     "workersNumber": {
       "description": "The number of the worker machines",
       "type": "integer",
-      "minimum": 1
+      "minimum": 0
     }
   }
 }
