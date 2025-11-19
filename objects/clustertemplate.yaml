@@ -5,12 +5,12 @@ metadata:
     helm.sh/resource-policy: keep
   labels:
     k0rdent.mirantis.com/component: kcm
-  name: aws-mixed-arch-standalone-1-0-0
+  name: aws-hybrid-arch-standalone-1-0-0
   namespace: kcm-system
 spec:
   helm:
     chartSpec:
-      chart: ./charts/aws-mixed-arch-standalone
+      chart: ./charts/aws-hybrid-arch-standalone
       interval: 10m0s
       reconcileStrategy: ChartVersion
       sourceRef:
