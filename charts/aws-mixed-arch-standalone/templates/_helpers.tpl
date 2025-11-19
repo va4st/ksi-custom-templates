@@ -31,7 +31,7 @@
 {{- end }}
 
 {{- define "machinedeploymentarm64.name" -}}
-    {{- include "cluster.name" . }}-md
+    {{- include "cluster.name" . }}-md-arm64
 {{- end }}
 
 {{- define "authentication-config.fullpath" -}}
